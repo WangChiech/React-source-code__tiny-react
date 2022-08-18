@@ -1,10 +1,11 @@
 import mountNativeElement from './mountNativeElement'
+import mountComponent from './mountComponent'
 import isFunction from './isFunction'
 
 export default function mountElement (virtualDOM, container) {
   //Component VS NativeElement
   if (isFunction(virtualDOM)) {
-    console.log('aaa')
+    mountComponent(virtualDOM, container)
   } else {
     mountNativeElement(virtualDOM, container)
   }
