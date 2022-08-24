@@ -20,11 +20,11 @@ console.log(virtualDOM)
 
 // TinyReact.render(virtualDOM, document.querySelector('#root'))
 
-function Demo () {
-  return <div><h1>hello </h1></div>
+function Demo (props) {
+  return <div>{props.title}<h1>hello </h1></div>
 }
 function Heart () {
   return <div>&hearts;</div>
 }
 console.log(<Heart/>)
-TinyReact.render(<Demo/>, document.querySelector('#root'))
+TinyReact.render(<Demo title="demo-props-title"/>, document.querySelector('#root'))
