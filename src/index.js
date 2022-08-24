@@ -26,5 +26,13 @@ function Demo (props) {
 function Heart () {
   return <div>&hearts;</div>
 }
-console.log(<Heart/>)
-TinyReact.render(<Demo title="demo-props-title"/>, document.querySelector('#root'))
+// console.log(<Heart/>)
+// TinyReact.render(<Demo title="demo-props-title"/>, document.querySelector('#root'))
+
+class Alert extends TinyReact.Component {
+  render () {
+    return <div>hello{this.props.title}</div>
+  }
+}
+
+TinyReact.render(<Alert title="class-props-title"/>, document.querySelector('#root'))
