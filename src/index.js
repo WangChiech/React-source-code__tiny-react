@@ -26,7 +26,7 @@ const modifyDOM = (
     {2==2 && <div>2</div>}
     <span>这是一段被修改过的内容</span>
     <button onClick={() => alert('hello，changed')}>button</button>
-    <h6>这个会被删除</h6>
+    {/* <h6>这个会被删除</h6> */}
     2,3
     <input type="text" value="13"/>
   </div>
