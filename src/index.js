@@ -26,7 +26,7 @@ const modifyDOM = (
     {2==2 && <div>2</div>}
     <span>这是一段被修改过的内容</span>
     <button onClick={() => alert('hello，changed')}>button</button>
-    <h3>这个会被删除</h3>
+    <h6>这个会被删除</h6>
     2,3
     <input type="text" value="13"/>
   </div>
@@ -39,7 +39,7 @@ TinyReact.render(virtualDOM, document.querySelector('#root'))
 setTimeout(() => {
   console.log('============')
   TinyReact.render(modifyDOM, document.querySelector('#root'))
-}, 2000)
+}, 5000)
 
 function Demo (props) {
   return <div>{props.title}<h1>hello </h1></div>
