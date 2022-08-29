@@ -32,14 +32,13 @@ const modifyDOM = (
   </div>
 )
 
-console.log(virtualDOM)
 
-TinyReact.render(virtualDOM, document.querySelector('#root'))
+// TinyReact.render(virtualDOM, document.querySelector('#root'))
 
-setTimeout(() => {
-  console.log('============')
-  TinyReact.render(modifyDOM, document.querySelector('#root'))
-}, 5000)
+// setTimeout(() => {
+//   console.log('============')
+//   TinyReact.render(modifyDOM, document.querySelector('#root'))
+// }, 5000)
 
 function Demo (props) {
   return <div>{props.title}<h1>hello </h1></div>
@@ -51,9 +50,26 @@ function Heart () {
 // TinyReact.render(<Demo title="demo-props-title"/>, document.querySelector('#root'))
 
 class Alert extends TinyReact.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      title: 'default title'
+    }
+    this.handleChangeTitle = this.handleChangeTitle.bind(this)
+  }
   render () {
-    return <div>hello{this.props.title}</div>
+    console.log('this.state', this.state)
+    return (
+      <div>
+        <span>{this.state.title}</span>
+        <div>{this.props.title}</div>
+        <button onClick={this.handleChangeTitle}>改变title</button>
+      </div>
+    )
+  }
+  handleChangeTitle () {
+    this.setState({ title: 'changed title' })
   }
 }
 
-// TinyReact.render(<Alert title="class-props-title"/>, document.querySelector('#root'))
+TinyReact.render(<Alert title="class-props-title"/>, document.querySelector('#root'))

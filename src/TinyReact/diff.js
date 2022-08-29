@@ -19,7 +19,7 @@ export default function diff (virtualDOM, container, oldDOM) {
     }
 
     virtualDOM.children.forEach((child, i) => {
-      diff(child, oldDOM, oldDOM.children[i])
+      diff(child, oldDOM, oldDOM.childNodes[i])
     })
 
     // 删除节点(默认子节点类型属性皆相同)
