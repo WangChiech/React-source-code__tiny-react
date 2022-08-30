@@ -81,9 +81,34 @@ class Alert extends TinyReact.Component {
   }
 }
 
-TinyReact.render(<Alert title="class-props-title"/>, document.querySelector('#root'))
+// TinyReact.render(<Alert title="class-props-title"/>, document.querySelector('#root'))
 
-setTimeout(() => {
-  TinyReact.render(<Alert title="class-props-title-update"/>, document.querySelector('#root'))
-  // TinyReact.render(<Demo title="this is demo component"/>, document.querySelector('#root'))
-}, 3000)
+// setTimeout(() => {
+//   TinyReact.render(<Alert title="class-props-title-update"/>, document.querySelector('#root'))
+//   // TinyReact.render(<Demo title="this is demo component"/>, document.querySelector('#root'))
+// }, 3000)
+
+
+class DemoRef extends TinyReact.Component {
+  constructor (props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+  render () {
+    return (
+      <div>
+        <input type="text" ref={input => (this.input = input)}/>
+        <button onClick={this.handleClick}>button</button>
+        <Alert ref={alert => {this.alert = alert}} title="alert title"/>
+      </div>
+    )
+  }
+  handleClick () {
+    console.log(this.input.value)
+    console.log(this.alert)
+  }
+  componentDidMount () {
+    console.log('componentDidMount')
+  }
+}
+TinyReact.render(<DemoRef/>, document.querySelector('#root'))
