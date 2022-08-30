@@ -70,6 +70,20 @@ class Alert extends TinyReact.Component {
   handleChangeTitle () {
     this.setState({ title: 'changed title' })
   }
+  componentWillReceiveProps (nextProps) {
+    console.log('componentWillReceiveProps')
+  }
+  componentWillUpdate (nextProps) {
+    console.log('componentWillUpdate')
+  }
+  componentDidUpdate (prevProps) {
+    console.log('componentDidUpdate')
+  }
 }
 
 TinyReact.render(<Alert title="class-props-title"/>, document.querySelector('#root'))
+
+setTimeout(() => {
+  TinyReact.render(<Alert title="class-props-title-update"/>, document.querySelector('#root'))
+  // TinyReact.render(<Demo title="this is demo component"/>, document.querySelector('#root'))
+}, 3000)

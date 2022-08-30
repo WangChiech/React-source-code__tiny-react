@@ -9,8 +9,6 @@ export default class Component {
     const virtualDOM = this.render()
     // 获取旧的 virtualDOM 进行比对
     const oldDOM = this.getDOM()
-    console.log(oldDOM._virtualDOM)
-    console.log(virtualDOM)
     diff(virtualDOM, oldDOM.parentNode,  oldDOM)
   }
   setDOM (dom) {
@@ -19,4 +17,17 @@ export default class Component {
   getDOM () {
     return this._dom
   }
+  updateProps (props) {
+    this.props = props
+  }
+  // 生命周期函数
+  componentWillMount () {}
+  componentDidMount () {}
+  componentWillReceiveProps (nextProps) {}
+  shouldComponentUpdate (nextProps, nextState) {
+    return nextProps != this.props || nextState != this.state
+  }
+  componentWillUpdate (nextProps, nextState) {}
+  componentDidUpdate (prevProps, prevState) {}
+  componentWillUnmount () {}
 }
