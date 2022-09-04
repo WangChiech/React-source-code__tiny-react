@@ -110,5 +110,59 @@ class DemoRef extends TinyReact.Component {
   componentDidMount () {
     console.log('componentDidMount')
   }
+  componentWillUnmount () {
+    console.log('componentWillUnmount')
+  }
 }
-TinyReact.render(<DemoRef/>, document.querySelector('#root'))
+// TinyReact.render(<DemoRef/>, document.querySelector('#root'))
+
+class KeyDemo extends TinyReact.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      persons: [
+        { id: '1', name: '111111' },
+        { id: '2', name: '222222' },
+        { id: '3', name: '333333' }
+      ],
+      noKeyList: [
+        { name: 1 },
+        { name: 2 },
+        { name: 3 }
+      ]
+    }
+    this.handleAdd = this.handleAdd.bind(this)
+  }
+  render () {
+    return (
+      <div>
+        <ul>
+          {
+            this.state.persons.map(person => (
+              <li key={person.id}>
+                {person.name}
+                <DemoRef/>
+              </li>
+            ))
+          }
+          {
+            this.state.noKeyList.map(item => (
+              <li>{item.name}</li>
+            ))
+          }
+        </ul>
+        <button onClick={this.handleAdd}>button</button>
+      </div>
+    )
+  }
+  handleAdd () {
+    const newState = JSON.parse(JSON.stringify(this.state))
+    // newState.persons.push(newState.persons.shift())
+    // newState.persons.splice(1, 0, { id: 8, name: '888888888'})
+    newState.persons.pop()
+    // newState.noKeyList.pop()
+    this.setState(newState)
+  }
+}
+
+TinyReact.render(<KeyDemo/>, document.querySelector('#root'))
